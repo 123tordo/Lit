@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,8 +13,8 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background-color: black; /* Cor de fundo preta */
-            color: #ecf0f1; /* Cor de texto cinza claro */
+            background-color: black;
+            color: #ecf0f1;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-size: 28px;
             text-align: center;
@@ -21,14 +22,14 @@
 
         #question-container {
             padding: 20px;
-            border: 2px solid #e74c3c; /* Cor da borda vermelha */
-            border-radius: 10px; /* Cantos arredondados */
-            background-color: #2c3e50; /* Cor de fundo cinza escuro */
+            border: 2px solid #e74c3c;
+            border-radius: 10px;
+            background-color: #2c3e50;
         }
 
         h1 {
             font-size: 36px;
-            color: #e74c3c; /* Cor vermelha para cabeçalhos */
+            color: #e74c3c;
             margin-bottom: 20px;
         }
 
@@ -37,10 +38,11 @@
         }
 
         .answer {
-            color: yellow; /* Cor amarela para respostas */
+            color: yellow;
         }
     </style>
 </head>
+
 <body>
 
 <script>
@@ -353,15 +355,13 @@
     answer: "Cem Anos de Solidão"
   },
         ];
-
-        function displayRandomQuestion() {
+function displayRandomQuestion() {
             const randomIndex = Math.floor(Math.random() * allLitQuestions.length);
             const currentQuestion = allLitQuestions[randomIndex];
 
             questionContainer.innerHTML = `<h1>${currentQuestion.question}</h1>`;
             questionContainer.appendChild(countdownElement);
 
-            // Mostrar a contagem regressiva por 15 segundos
             let secondsLeft = 15;
             countdownElement.textContent = `Tempo restante: ${secondsLeft}s`;
 
@@ -373,13 +373,10 @@
                 } else {
                     clearInterval(countdownInterval);
 
-                    // Mostrar a resposta por 10 segundos
                     questionContainer.innerHTML += `<h1 class="answer">Resposta: ${currentQuestion.answer}</h1>`;
                     setTimeout(() => {
-                        // Mostrar "Lança o dado outra vez e lê o código para um novo desafio" por 10 segundos
                         questionContainer.innerHTML = "<h1>Lança o dado outra vez e lê o código para um novo desafio</h1>";
                         setTimeout(() => {
-                            // Tornar a página inteira preta após 10 segundos
                             document.body.style.backgroundColor = "black";
                         }, 10000);
                     }, 10000);
@@ -387,9 +384,10 @@
             }, 1000);
         }
 
-        displayRandomQuestion(); // Chamada inicial para iniciar o quiz
+        displayRandomQuestion();
     });
 </script>
 
 </body>
+
 </html>
