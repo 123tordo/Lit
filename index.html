@@ -12,8 +12,8 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background-color: black; /* Black background color */
-            color: #ecf0f1; /* Light grey text color */
+            background-color: black;
+            color: #ecf0f1;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-size: 28px;
             text-align: center;
@@ -21,14 +21,14 @@
 
         #question-container {
             padding: 20px;
-            border: 2px solid #e74c3c; /* Red border color */
-            border-radius: 10px; /* Rounded corners */
-            background-color: #2c3e50; /* Dark grey background color */
+            border: 2px solid #e74c3c;
+            border-radius: 10px;
+            background-color: #2c3e50;
         }
 
         h1 {
             font-size: 36px;
-            color: #e74c3c; /* Red color for headers */
+            color: #e74c3c;
             margin-bottom: 20px;
         }
 
@@ -37,7 +37,7 @@
         }
 
         .answer {
-            color: yellow; /* Yellow color for answers */
+            color: yellow;
         }
     </style>
 </head>
@@ -400,8 +400,9 @@
     answer: "Cem Anos de Solidão"
   },
 ];
-// Shuffle the questions array to ensure randomness
-        const shuffledQuestions = shuffleArray(allGenQuestions.slice());
+
+        // Shuffle the questions array to ensure randomness
+        const shuffledQuestions = shuffleArray(allLitQuestions.slice());
 
         // Variable to keep track of the questions shown
         let questionsShown = 0;
@@ -418,7 +419,7 @@
             if (questionsShown < shuffledQuestions.length) {
                 const currentQuestion = shuffledQuestions[questionsShown++];
 
-                questionContainer.innerHTML = `<h1>${currentQuestion.pergunta}</h1>`;
+                questionContainer.innerHTML = `<h1>${currentQuestion.question}</h1>`;
                 questionContainer.appendChild(countdownElement);
 
                 // Show the countdown for 15 seconds
@@ -434,7 +435,7 @@
                         clearInterval(countdownInterval);
 
                         // Show the answer for 10 seconds
-                        questionContainer.innerHTML += `<h1 class="answer">Resposta: ${currentQuestion.resposta}</h1>`;
+                        questionContainer.innerHTML += `<h1 class="answer">Resposta: ${currentQuestion.answer}</h1>`;
                         setTimeout(() => {
                             // Show "Lança o dado outra vez e lê o código para novo desafio" for 10 seconds
                             questionContainer.innerHTML = "<h1>Lança o dado outra vez e lê o código para novo desafio</h1>";
