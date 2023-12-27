@@ -50,7 +50,7 @@
 
         document.body.appendChild(questionContainer);
 
-        const allArtQuestions = [
+        const allLitQuestions = [
            {
     question: "Quem é o autor de 'Os Lusíadas', a epopeia nacional de Portugal?",
     answer: "Luís de Camões"
@@ -402,8 +402,8 @@
         ];
 
         function displayRandomQuestion() {
-            const randomIndex = Math.floor(Math.random() * allArtQuestions.length);
-            const currentQuestion = allArtQuestions[randomIndex];
+            const randomIndex = Math.floor(Math.random() * allLitQuestions.length);
+            const currentQuestion = allLitQuestions[randomIndex];
 
             questionContainer.innerHTML = `<h1>${currentQuestion.question}</h1>`;
             questionContainer.appendChild(countdownElement);
