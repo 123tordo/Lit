@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Lit Quiz</title>
+    <title>Quiz de Arte Aleatório</title>
     <style>
         body {
             margin: 0;
@@ -12,8 +12,8 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background-color: black;
-            color: #ecf0f1;
+            background-color: black; /* Cor de fundo preta */
+            color: #ecf0f1; /* Cor de texto cinza claro */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-size: 28px;
             text-align: center;
@@ -21,14 +21,14 @@
 
         #question-container {
             padding: 20px;
-            border: 2px solid #e74c3c;
-            border-radius: 10px;
-            background-color: #2c3e50;
+            border: 2px solid #e74c3c; /* Cor da borda vermelha */
+            border-radius: 10px; /* Cantos arredondados */
+            background-color: #2c3e50; /* Cor de fundo cinza escuro */
         }
 
         h1 {
             font-size: 36px;
-            color: #e74c3c;
+            color: #e74c3c; /* Cor vermelha para cabeçalhos */
             margin-bottom: 20px;
         }
 
@@ -37,7 +37,7 @@
         }
 
         .answer {
-            color: yellow;
+            color: yellow; /* Cor amarela para respostas */
         }
     </style>
 </head>
@@ -50,8 +50,8 @@
 
         document.body.appendChild(questionContainer);
 
-        const allLitQuestions = [
-  {
+        const allArtQuestions = [
+           {
     question: "Quem é o autor de 'Os Lusíadas', a epopeia nacional de Portugal?",
     answer: "Luís de Camões"
   },
@@ -399,53 +399,42 @@
     question: "Qual é o romance de Gabriel García Márquez que explora realismo mágico?",
     answer: "Cem Anos de Solidão"
   },
-];
-
-        // Shuffle the questions array to ensure randomness
-        const shuffledQuestions = shuffleArray(allLitQuestions.slice());
-
-        // Variable to keep track of the questions shown
-        let questionsShown = 0;
-
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
-        }
+        ];
 
         function displayRandomQuestion() {
-            if (questionsShown < shuffledQuestions.length) {
-                const currentQuestion = shuffledQuestions[questionsShown++];
+            const randomIndex = Math.floor(Math.random() * allArtQuestions.length);
+            const currentQuestion = allArtQuestions[randomIndex];
 
-                questionContainer.innerHTML = `<h1>${currentQuestion.question}</h1>`;
-                questionContainer.appendChild(countdownElement);
+            questionContainer.innerHTML = `<h1>${currentQuestion.question}</h1>`;
+            questionContainer.appendChild(countdownElement);
 
-                // Show the countdown for 15 seconds
-                let secondsLeft = 15;
-                countdownElement.textContent = `Tempo restante: ${secondsLeft}s`;
+            // Mostrar a contagem regressiva por 15 segundos
+            let secondsLeft = 15;
+            countdownElement.textContent = `Tempo restante: ${secondsLeft}s`;
 
-                const countdownInterval = setInterval(() => {
-                    secondsLeft--;
+            const countdownInterval = setInterval(() => {
+                secondsLeft--;
 
-                    if (secondsLeft >= 0) {
-                        countdownElement.textContent = `Tempo restante: ${secondsLeft}s`;
-                    } else {
-                        clearInterval(countdownInterval);
+                if (secondsLeft >= 0) {
+                    countdownElement.textContent = `Tempo restante: ${secondsLeft}s`;
+                } else {
+                    clearInterval(countdownInterval);
 
-                        // Show the answer for 10 seconds
-                        questionContainer.innerHTML += `<h1 class="answer">Resposta: ${currentQuestion.answer}</h1>`;
+                    // Mostrar a resposta por 10 segundos
+                    questionContainer.innerHTML += `<h1 class="answer">Resposta: ${currentQuestion.answer}</h1>`;
+                    setTimeout(() => {
+                        // Mostrar "Lança o dado outra vez e lê o código para um novo desafio" por 10 segundos
+                        questionContainer.innerHTML = "<h1>Lança o dado outra vez e lê o código para um novo desafio</h1>";
                         setTimeout(() => {
-                            // Show "Lança o dado outra vez e lê o código para novo desafio" for 10 seconds
-                            questionContainer.innerHTML = "<h1>Lança o dado outra vez e lê o código para novo desafio</h1>";
+                            // Tornar a página inteira preta após 10 segundos
+                            document.body.style.backgroundColor = "black";
                         }, 10000);
-                    }
-                }, 1000);
-            }
+                    }, 10000);
+                }
+            }, 1000);
         }
 
-        displayRandomQuestion(); // Initial call to start the quiz
+        displayRandomQuestion(); // Chamada inicial para iniciar o quiz
     });
 </script>
 
